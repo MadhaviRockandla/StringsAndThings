@@ -1,5 +1,6 @@
 package io.zipcoder;
 
+import java.util.Objects;
 
 /**
  * @author tariq
@@ -15,7 +16,14 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        String[] arr = input.split(" ");
+        Integer count = 0;
+        for (String a : arr) {
+            if (a.charAt(a.length()-1) == 'y' ||  a.charAt(a.length()-1) == 'z') {
+                count += 1;
+            }
+        }
+        return count;
     }
 
     /**
@@ -28,7 +36,13 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+        String[] arr = base.split(" ");
+        String leftOver = "";
+
+        for (String s : arr) {
+            leftOver = base.replaceAll(remove, "");
+        }
+        return leftOver;
     }
 
     /**
@@ -40,9 +54,24 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        int countIs = 0;
+        int countNot = 0;
+        char[] charArray = input.toCharArray();
+        char i = 'i';
+        char s = 's';
+        char n = 'n';
+        char o = 'o';
+        char t = 't';
+        for (int count = 0; count < charArray.length - 1; count++) {
+            if (charArray[count] == i && charArray[count + 1] == s) {
+                countIs++;
+            }
+            if (charArray[count] == n && charArray[count +1] == o && charArray[count +2] == t) {
+                countNot++;
+            }
+        }
+        return countIs == countNot;
     }
-
     /**
      * We'll say that a lowercase 'g' in a string is "happy" if there is another 'g' immediately to its left or right.
      * Return true if all the g's in the given string are happy.
@@ -51,9 +80,14 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
-    }
+        Boolean isHappy = false;
 
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == 'g'&& input.charAt(i-1) == 'g') {
+                isHappy = true;
+            }
+        }      return isHappy;
+    }
 
     /**
      * We'll say that a "triple" in a string is a char appearing three times in a row.
@@ -63,6 +97,14 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        Integer countTriple = 0;
+
+        for (int i = 2; i < input.length(); i++) {
+            if (input.charAt(i) == input.charAt(i-1) && input.charAt(i) == input.charAt(i-2)) {
+                countTriple +=1;
+            }
+        }                    return countTriple;
     }
 }
+
+
